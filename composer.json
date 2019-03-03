@@ -1,0 +1,40 @@
+{
+    "name": "devuniverse/profiles",
+    "description": "A laravel Profile manager",
+    "homepage": "https://github.com/devuniverse/profiles",
+    "keywords": [
+        "profile",
+        "laravel profile",
+        "laravel profiles"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Devuniverse",
+            "email": "ishimwe@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Devuniverse\\Profiles\\": "/src"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+      },
+      "extra": {
+          "laravel": {
+              "providers": [
+                  "Devuniverse\\Profiles\\ProfilesServiceProvider"
+              ]
+          }
+      },
+      "minimum-stability": "stable",
+      "require": {
+        "laravel/framework": "5.7.*",
+        "codiiv/laravel-taxonomies": "1.0.*"
+      },
+      "require-dev": {
+          "laravel/laravel": "5.7.*"
+    }
+}
