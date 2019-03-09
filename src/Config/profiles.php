@@ -69,5 +69,6 @@ return [
    */
   'separate_uploads' => [
 
-  ]
+  ],
+  'override_default' => false
 ];
