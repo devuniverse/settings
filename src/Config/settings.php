@@ -4,15 +4,15 @@ return [
   /**
    *|
    */
-  "profiles_url_protocol"      => "https",
+  "settings_url_protocol"      => "https",
   /**
    *|
    */
-  "profiles_url"      => "profile",
+  "settings_url"      => "dashboard/settings",
   /**
    *|
    */
-  "master_file_extend" => "profiles::main",
+  "master_file_extend" => "lara-settings::main",
 
   // "default_file_system" => "public",
   /**
@@ -21,7 +21,7 @@ return [
   'yields' => [
       'head'   => 'css',
       'footer' => 'js',
-      'profiles-content'=>'content'
+      'settings-content'=>'content'
   ],
   /**
    *|

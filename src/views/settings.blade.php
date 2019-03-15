@@ -1,42 +1,34 @@
-@extends(Config::get('profiles.master_file_extend'))
+@extends(Config::get('lara-settings.master_file_extend'))
 
-@section(Config::get('profiles.yields.head'))
-    @if(Config::get('profiles.includes.fontawesome'))
-      <link rel="stylesheet" href="{{ url('/profiles/assets/fontawesome/css/all.css') }}">
+@section(Config::get('lara-settings.yields.head'))
+    @if(Config::get('lara-settings.includes.fontawesome'))
+      <link rel="stylesheet" href="{{ url('/lara-settings/assets/fontawesome/css/all.css') }}">
     @endif
-    @if(Config::get('profiles.includes.animate'))
-      <link rel="stylesheet" href="{{ url('/profiles/assets/css/animate.css') }}">
+    @if(Config::get('lara-settings.includes.animate'))
+      <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/animate.css') }}">
     @endif
-    @if(Config::get('profiles.includes.animate'))
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/nexus.css') }}">
+    @if(Config::get('lara-settings.includes.animate'))
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/nexus.css') }}">
     @endif
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/styled.css') }}">
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/profile.css') }}">
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/lite-editor.css') }}">
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/tablet.css') }}">
-    <link rel="stylesheet" href="{{ url('/profiles/assets/css/desktop.css') }}">
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/styled.css') }}">
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/settings.css') }}">
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/tablet.css') }}">
+    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/desktop.css') }}">
 @endsection
 
-@section(Config::get('profiles.yields.footer'))
+@section(Config::get('lara-settings.yields.footer'))
   <script type="text/javascript">
-    var profilePath = "/<?php echo \Config::get('profiles.profiles_url')?>";
+    var settingsPath = "/<?php echo \Config::get('lara-settings.settings_url')?>";
   </script>
-  @if( Config::get('profiles.includes.jquery'))
-    <script src="{{ url('/profiles/assets/js/jquery.js') }}"></script>
+  @if( Config::get('lara-settings.includes.jquery'))
+    <script src="{{ url('/lara-settings/assets/js/jquery.js') }}"></script>
   @endif
-    <script src="{{ url('/profiles/assets/js/profile.js') }}"></script>
-    <script src="{{ url('/profiles/assets/js/lite-editor.js') }}"></script>
-    <script>
-	window.addEventListener('DOMContentLoaded',function(){
-        var editor = new LiteEditor('.js-lite-editor', {
-           nl2br: true
-        });
-    });
-	</script>
+    <script src="{{ url('/lara-settings/assets/js/settings.js') }}"></script>
+
 @endsection
 
-@section(Config::get('profiles.yields.profiles-content'))
+@section(Config::get('lara-settings.yields.settings-content'))
 
   <div class="full-profile">
     <!-- <div class="alert alert-success">
@@ -77,7 +69,7 @@
                 </div><a href="javascript:;" class="remove"><i class="fa fa-trash"></i></a>
             </div>
           </div>
-          <form class="update-profile-form" action="/{{ \Config::get('profiles.profiles_url') }}/update" method="post">
+          <form class="update-profile-form" action="/{{ \Config::get('lara-settings.settings_url') }}/update" method="post">
             @csrf
             <input type="hidden" name="imageurldata" value="">
             <button type="submit" class="btn btn-primary" id="previewBtn"><?php echo _i('Preview'); ?></button>

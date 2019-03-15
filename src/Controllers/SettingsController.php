@@ -1,6 +1,6 @@
 <?php
 
-namespace Devuniverse\Profiles\Controllers;
+namespace Devuniverse\Settings\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -12,22 +12,22 @@ use Intervention\Image\Facades\Image;
 use Config;
 use Illuminate\Support\Facades\Storage;
 
-class ProfilesController extends Controller
+class SettingsController extends Controller
 {
   public function loadIndex(){
-    return view('profiles::profile');
+    return view('lara-settings::settings');
   }
   public function updateAvatar(Request $request){
     $image = $request->imageurldata;
     $userid= \Auth::user()->id;
-    $filePath = 'uploads/profiles/'. str_random(12) . '.jpg';
+    $filePath = 'uploads/settings/'. str_random(12) . '.jpg';
     $s3 = \Storage::disk('s3');
     $imageAmazoned = $s3->put($filePath, file_get_contents($image), 'public');
     if($imageAmazoned){
 
       $message = _i('Uploaded');
       $msgtype = 1;
-      return redirect('/'.Config::get('profiles.profiles_url'))->with( ['theresponse'=>["message"=> $message, "msgtype"=>$msgtype]] );
+      return redirect('/'.Config::get('settings.settings_url'))->with( ['theresponse'=>["message"=> $message, "msgtype"=>$msgtype]] );
     }else{
       $message = _i('Uploaded');
       $msgtype = 0;

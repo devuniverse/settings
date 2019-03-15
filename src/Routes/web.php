@@ -1,19 +1,16 @@
 <?php
 
-$profilesPath = Config::get('profiles.profiles_url');
+$settingsPath = Config::get('lara-settings.settings_url');
 
-Route::group(['prefix' => $profilesPath,  'middleware' => ['web','auth']], function()
+Route::group(['prefix' => $settingsPath,  'middleware' => ['web','auth']], function()
 {
   /**
    * GET ROUTES
    */
-  Route::get('/', 'Devuniverse\Profiles\Controllers\ProfilesController@loadIndex');
-  Route::get('create', 'Devuniverse\Profiles\Controllers\ProfilesController@create')->name('profiles.create');
-  Route::get('showfiles', 'Devuniverse\Profiles\Controllers\ProfilesController@index')->name('load.profiles.index');
+  Route::get('/', 'Devuniverse\Settings\Controllers\SettingsController@loadIndex');
 
   /**
   * POST ROUTES
   */
-  Route::post('update', 'Devuniverse\Profiles\Controllers\ProfilesController@updateAvatar');
 
 });

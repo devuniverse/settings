@@ -1,11 +1,11 @@
 {
-    "name": "devuniverse/profiles",
-    "description": "A laravel Profile manager",
-    "homepage": "https://github.com/devuniverse/profiles",
+    "name": "devuniverse/settings",
+    "description": "A laravel Settings manager",
+    "homepage": "https://github.com/devuniverse/settings",
     "keywords": [
-        "profile",
-        "laravel profile",
-        "laravel profiles"
+        "settings",
+        "laravel setting",
+        "laravel settings"
     ],
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-          "Devuniverse\\Profiles\\": "/src"
+          "Devuniverse\\Settings\\": "/src"
         },
         "files": [
             "src/Support/helpers.php"
@@ -25,7 +25,7 @@
       "extra": {
           "laravel": {
               "providers": [
-                  "Devuniverse\\Profiles\\ProfilesServiceProvider"
+                  "Devuniverse\\Settings\\SettingsServiceProvider"
               ]
           }
       },
@@ -33,8 +33,6 @@
       "require": {
         "laravel/framework": "5.8.*",
         "Belphemur/laravel-gettext": "6.x",
-        "codiiv/extrameta": "master",
-        "league/flysystem-aws-s3-v3": "~1.0"
       },
       "require-dev": {
           "laravel/laravel": "5.8.*"
