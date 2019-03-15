@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Uploading images in Laravel with DropZone</title>
 
-    <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url('/profiles/assets/css/bootstrap.css') }}">
 
-    @yield(Config::get('lara-settings.yields.head'))
+    @yield(Config::get('profiles.yields.head'))
 </head>
 <body>
-    <div class="container-fluid settings-main">
-        @yield(Config::get('lara-settings.yields.settings-content'))
+    <div class="container-fluid profiles-main">
+        @yield(Config::get('profiles.yields.profiles-content'))
     </div>
     <script type="text/javascript">
-      var settingsPath = "<?php echo Config::get("lara-settings.settings_url") ?>";
+      var profilesPath = "<?php echo Config::get("profiles.profiles_url") ?>";
     </script>
-    @yield(Config::get('lara-settings.yields.footer'))
+    @yield(Config::get('profiles.yields.footer'))
 
 
 </body>
