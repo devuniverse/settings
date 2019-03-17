@@ -10,6 +10,7 @@
     @if(Config::get('lara-settings.includes.animate'))
     <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/nexus.css') }}">
     @endif
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/styled.css') }}">
     <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ url('/lara-settings/assets/css/settings.css') }}">
@@ -29,115 +30,34 @@
 @endsection
 
 @section(Config::get('lara-settings.yields.settings-content'))
+  <?php $settingsUrl  =  Config::get('lara-settings.settings_url'); ?>
+  <div class="full-settings">
+    <div class="settings-inner">
+       <form class="" action="{{ url($settingsUrl.'/update/settings') }}" method="post">
+         @csrf
+         <div class="top-bar-saving">
+           <div class="float-right">
+             <button type="button" class="btn btn-primary" name="button">{{ _i('Save') }}</button>
+             <button type="button" class="btn btn-primary" name="button">{{ _i('Cancel') }}</button>
+           </div>
+         </div>
+         <div class="form-content">
+           <div class="navigate-settings">
+             <ul>
+               <li class="active" data-content="general">{{ _i('General') }}</li>
+               <li  data-content="security">{{ _i('Security') }}</li>
+               <li  data-content="seo">{{ _i('SEO') }}</li>
+               <li  data-content="languages">{{ _i('Languages') }}</li>
+               <li  data-content="miscellaneous">{{ _i('Miscellaneous') }}</li>
+             </ul>
+           </div>
+           <div class=form-content-tabscontent>
+             @include('lara-settings::partials.settings.general')
+           </div>
+ 
+         </div>
+       </form>
 
-  <div class="full-profile">
-    <!-- <div class="alert alert-success">
-
-    </div> -->
-    <div class="profile">
-      <div class="cell nexus--1-6">
-        <div class="profile-inner">
-          <div class="photo">
-            <input type="file" accept="image/*">
-            <div class="photo__helper">
-                <div class="photo__frame photo__frame--circle">
-                  <canvas class="photo__canvas"></canvas>
-                  <div class="message is-empty">
-                      <p class="message--desktop">{{ _i('Drop your photo here or browse your computer') }}.</p>
-                      <p class="message--mobile">{{ _i('Tap here to select your picture') }}.</p>
-                  </div>
-                  <div class="message is-loading">
-                      <i class="fa fa-2x fa-spin fa-spinner"></i>
-                  </div>
-                  <div class="message is-dragover">
-                      <i class="fa fa-2x fa-cloud-upload"></i>
-                      <p>{{ _i('Drop your photo') }}</p>
-                  </div>
-                  <div class="message is-wrong-file-type">
-                      <p>{{ _i('Only images allowed') }}.</p>
-                      <p class="message--desktop">{{ _i('Drop your photo here or browse your computer') }}.</p>
-                      <p class="message--mobile">{{ _i('Tap here to select your picture') }}.</p>
-                  </div>
-                  <div class="message is-wrong-image-size">
-                      <p>{{ _i('Your photo must be larger than 350px') }}.</p>
-                  </div>
-                </div>
-            </div>
-            <div class="photo__options hide">
-                <div class="photo__zoom">
-                    <input type="range" class="zoom-handler">
-                </div><a href="javascript:;" class="remove"><i class="fa fa-trash"></i></a>
-            </div>
-          </div>
-          <form class="update-profile-form" action="/{{ \Config::get('lara-settings.settings_url') }}/update" method="post">
-            @csrf
-            <input type="hidden" name="imageurldata" value="">
-            <button type="submit" class="btn btn-primary" id="previewBtn"><?php echo _i('Preview'); ?></button>
-          </form>
-          <div class="nav-holder">
-            <ul>
-              <li class="selected" data-content="about"><i class="fa fa-info-circle" aria-hidden="true"></i> <span><?php echo _i('About Me'); ?></span></li>
-              <li  data-content="security"><i class="fa fa-lock" aria-hidden="true"></i> <span><?php echo _i('Security'); ?></span></li>
-              <li  data-content="other"><i class="fa fa-life-ring" aria-hidden="true"></i> <span><?php echo _i('Other'); ?></span></li>
-            </ul>
-          </div>
-        </div>
-      </div><div class="cell nexus--5-6 profile-sidemain">
-        <div class="profile-inner">
-          <div class="messages-alerts">
-            @if( !empty(Session::get('theresponse')) )
-              @if(Session::get('theresponse')["msgtype"]==1)
-              <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <strong>Well done!</strong> {{ Session::get('theresponse')["message"] }}
-              </div>
-              @else
-              <div class="alert alert-danger">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <strong>Error!</strong> {{ Session::get('theresponse')["message"] }}
-              </div>
-              @endif
-            @endif
-          </div>
-          <div class="tab-content content-about">
-            <div class="row-content">
-              <div class="inputcontent row">
-
-                <h1>{{ _i("Biography") }}</h1>
-
-                <textarea class='js-lite-editor fullwidth'></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="hidden tab-content content-security">
-            <div class="">
-              <h1>{{ _i("UPdate Password") }}</h1>
-              <div class="row-content">
-                <div class="inputcontent row">
-                  <label for="currentpassword"  class="col col-md-4">{{ _i("Current password") }}</label>
-                  <input class="col col-md-8" type="password" name="currentpassword" value="">
-                </div>
-                <div class="inputcontent row">
-                  <label for="newpassword" class="col col-md-4">{{ _i("New Password") }}</label>
-                  <input type="password" class="col col-md-8" name="newpassword" value="">
-                </div>
-                <div class="inputcontent row">
-                  <label for="newpassword" class="col col-md-4">{{ _i("Password confirm") }}</label>
-                  <input type="password"  class="col col-md-8" name="passwordconfirm" value="">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="hidden tab-content content-other">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="previews-container">
-      <img src="" alt="" class="preview">
-      <!-- <img src="" alt="" class="preview preview--rounded"> -->
     </div>
     <!-- <button type="button" class="btn btn-primary" id="uploadBtn">Upload Example</button> -->
   </div>

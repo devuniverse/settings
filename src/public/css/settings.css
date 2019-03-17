@@ -1,0 +1,37 @@
+.settings-inner {
+  position: relative;
+}
+.top-bar-saving {
+  margin: 0px auto 0px;
+  background-color: #e2752d;
+  padding: 3px 3px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.form-content {
+    position: absolute;
+    width: 100%;
+    top: 52px;
+}
+.form-content {
+    position: absolute;
+    top: 4rem;
+}
+.navigate-settings ul {
+    list-style: none;text-align: center;
+    padding: 0; margin: 0px;
+    background-color: #9DC83B;
+}
+.navigate-settings ul li{
+  list-style: none;
+  vertical-align: middle;
+  display: inline-block;
+  min-width: 9rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  color: #fff; cursor: pointer;
+}
+.navigate-settings ul li.active {
+    background-color: #3AA0F3;
+}

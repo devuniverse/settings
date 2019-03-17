@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
 use Config;
+use View;
 use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
@@ -33,5 +34,12 @@ class SettingsController extends Controller
       $msgtype = 0;
     }
     return response()->json(['message'=>$message, 'msgtype' => $msgtype]);
+  }
+  public function loadView(Request $request){
+    $theview = $request->view;
+    return View::make('lara-settings::partials.settings.'.$theview)->render();
+  }
+  public function updateSetting(Request $request){
+
   }
 }

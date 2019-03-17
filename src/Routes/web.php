@@ -12,5 +12,7 @@ Route::group(['prefix' => $settingsPath,  'middleware' => ['web','auth']], funct
   /**
   * POST ROUTES
   */
+  Route::post('update/settings','Devuniverse\Settings\Controllers\SettingsController@updateSetting');
+  Route::post('loadview/{view}', 'Devuniverse\Settings\Controllers\SettingsController@loadView');
 
 });
