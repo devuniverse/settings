@@ -33,12 +33,14 @@
   <?php $settingsUrl  =  Config::get('lara-settings.settings_url'); ?>
   <div class="full-settings">
     <div class="settings-inner">
-       <form class="" action="{{ url($settingsUrl.'/update/settings') }}" method="post">
+       <form class="save-allsettings" action="{{ url($settingsUrl.'/update') }}" method="post">
          @csrf
+         <input type="hidden" name="thisauth" value="<?php echo \Auth::user()->id;  ?>">
+
          <div class="top-bar-saving">
            <div class="float-right">
-             <button type="button" class="btn btn-primary" name="button">{{ _i('Save') }}</button>
-             <button type="button" class="btn btn-primary" name="button">{{ _i('Cancel') }}</button>
+             <button type="submit" class="btn btn-primary save-settings-btn" name="save-settings">{{ _i('Save') }}</button>
+             <a class="btn btn-primary btn-danger" href="{{  url()->previous() }}">{{ _i('Cancel') }}</a>
            </div>
          </div>
          <div class="form-content">
@@ -54,7 +56,7 @@
            <div class=form-content-tabscontent>
              @include('lara-settings::partials.settings.general')
            </div>
- 
+
          </div>
        </form>
 

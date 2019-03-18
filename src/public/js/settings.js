@@ -30,4 +30,8 @@
 
     pendingRemove(dis);
   });
+
+  $(document).on('submit', '.save-allsettings', function(e){
+    $('.save-settings-btn').prepend('<i class="fa fa-spinner fa-spin"></i>');
+  });
 })(jQuery);

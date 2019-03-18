@@ -35,3 +35,12 @@
 .navigate-settings ul li.active {
     background-color: #3AA0F3;
 }
+.settings-row {
+    padding: 10px 3px;
+}
+.vertimiddle {
+    vertical-align: middle;
+}
+.nexus-left-inner textarea {
+    width: 100%;
+}
